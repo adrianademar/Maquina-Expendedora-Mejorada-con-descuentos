@@ -16,6 +16,8 @@ public class MaquinaExpendedoraMejorada {
     private boolean maquinaDePremios;
     
     private int maximoBilletes;
+    
+    private int contador;
     /**
      * Crea una maquina expendedora de billetes de tren con el 
      * precio del billete y el origen y destino dados. Se asume que el precio
@@ -30,6 +32,7 @@ public class MaquinaExpendedoraMejorada {
         estacionDestino = destino;
         maquinaDePremios = maquinaPremios;
         maximoBilletes = maximoDeBilletes;
+        contador = 0;
     }
 
     /**
@@ -78,7 +81,11 @@ public class MaquinaExpendedoraMejorada {
                 System.out.println("##################");
                 System.out.println();
                 if (maquinaDePremios){
-                    System.out.println("Usted ha ganado un descuento por valor de " + (precioBillete * 0.1) + " € para sus siguientes compras en los establecimientos seleccionados");
+                    contador++;
+                    if (contador == 3) {
+                        System.out.println("Usted ha ganado un descuento por valor de " + (precioBillete * 0.1) + " € para sus siguientes compras en los establecimientos seleccionados");
+                        contador = 0;
+                    }
                 }
                 // Actualiza el total de dinero acumulado en la maquina
                 totalDineroAcumulado = totalDineroAcumulado + precioBillete;
